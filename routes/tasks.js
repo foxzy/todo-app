@@ -16,7 +16,7 @@ var tasks = [
     },
     {
         "id": 3,
-        "status": "INPROGRESS",
+        "status": "COMPLATED",
         "Tag": "shopping",
         "text": "buy bodySuite"
     },
@@ -26,7 +26,6 @@ var tasks = [
         "Tag": "shopping",
         "text": "buy usething"
     },
-
 ];
 
 
@@ -39,11 +38,23 @@ exports.findById = function (id) {
     }
 };
 
-exports.fildByStatus = function (status) {
+exports.filterByStatus = function (status) {
     var filtered = tasks.filter(function (item) {
         return item.status === status;
     });
     return filtered;
+}
+exports.filterByTag = function (tag) {
+    var filtered = tasks.filter(function (item) {
+        return item.Tag === tag;
+    });
+    return filtered;
+}
+exports.filterByTagAndStatus = function (tag,status) {
+    var filtered = tasks.filter(function (item) {
+        return item.Tag === tag && item.status === status ;
+    });
+        return filtered;
 }
 
 

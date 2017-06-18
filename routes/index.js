@@ -20,7 +20,12 @@ router.get('/tasks/:id', function (req, res) {
 });
 router.get('/tasks/status/:status', function (req, res) {
     var status = req.params.status
-    res.json(tasks.fildByStatus(status));
+    res.json(tasks.filterByStatus(status));
+});
+router.get('/tasks/TagWithStatus/:tag/:status', function (req, res) {
+    var tag = req.params.tag
+    var status = req.params.status
+    res.json(tasks.filterByTagAndStatus(tag,status));
 });
 
 
