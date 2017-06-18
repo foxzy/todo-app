@@ -16,9 +16,15 @@ var tasks = [
     },
     {
         "id": 3,
-        "status": "",
+        "status": "INPROGRESS",
         "Tag": "shopping",
         "text": "buy bodySuite"
+    },
+    {
+        "id": 4,
+        "status": "INPROGRESS",
+        "Tag": "shopping",
+        "text": "buy usething"
     },
 
 ];
@@ -32,11 +38,12 @@ exports.findById = function (id) {
         if (tasks[i].id == id) return tasks[i];
     }
 };
+
 exports.fildByStatus = function (status) {
-    for (var i = 0; i< tasks.length; i++)
-    {
-        if(tasks[i].status == status) return tasks[i];
-    }
+    var filtered = tasks.filter(function (item) {
+        return item.status === status;
+    });
+    return filtered;
 }
 
 
