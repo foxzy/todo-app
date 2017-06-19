@@ -4,34 +4,48 @@
 var tasks = [
     {
         "id": 1,
-        "status": "COMPLATED",
-        "Tag": "home",
-        "text": "sweet the room"
+        "subject": "Clean my room",
+        "content": "sweet the room",
+        "status": "pending",
+        "tags": ["home"]
     },
     {
         "id": 2,
-        "status": "COMPLATED",
-        "Tag": "bill",
-        "text": "Pay k-bank invoice"
+        "subject": "Pay k-bank invoice",
+        "content": "Pay k-bank invoice",
+        "status": "done",
+        "tags": ["bill"]
     },
     {
         "id": 3,
-        "status": "COMPLATED",
-        "Tag": "shopping",
-        "text": "buy bodySuite"
+        "subject": "Buy body suite",
+        "content": "Buy body suite",
+        "status": "done",
+        "tags": ["shopping"]
     },
     {
         "id": 4,
-        "status": "INPROGRESS",
-        "Tag": "shopping",
-        "text": "buy usething"
-    },
+        "subject": "Buy used things",
+        "content": "Buy used things",
+        "status": "done",
+        "tags": ["shopping"]
+    }
 ];
 
+function findLastId() {
+    var id = 0;
+    for (var i = 0; i < tasks.length; i++) {
+        if (tasks[i].id > id) {
+            id = tasks[i].id;
+        }
+    }
+    return id;
+}
 
 exports.findAll = function() {
     return tasks;
 };
+
 exports.findById = function (id) {
     for (var i = 0; i < tasks.length; i++) {
         if (tasks[i].id == id) return tasks[i];
@@ -43,30 +57,45 @@ exports.filterByStatus = function (status) {
         return item.status === status;
     });
     return filtered;
-}
+};
+
 exports.filterByTag = function (tag) {
     var filtered = tasks.filter(function (item) {
         return item.Tag === tag;
     });
     return filtered;
-}
+};
+
 exports.filterByTagAndStatus = function (tag,status) {
     var filtered = tasks.filter(function (item) {
         return item.Tag === tag && item.status === status ;
     });
         return filtered;
-}
-exports.updateTask = function (task, data)
+};
+
+exports.update = function (task, data)
 {
-    for (var name in task) {
-        if (task.hasOwnProperty(name)) {
-            //console.log(name.toString());
-
-
-
+    for (var prop in data) {
+        if (task.hasOwnProperty(prop)) {
+            task[prop] = data[prop];
         }
     }
-}
+};
 
+exports.persist = function (data) {
+    var task = data;
+    task.id = findLastId() + 1;
+    tasks.push(task)
+};
+
+exports.delete = function (id) {
+    tasks = tasks.filter(function (task) {
+        return task.id != id;
+    })
+};
+
+exports.updateStatus = function (task, status) {
+    task.status = status;
+};
 
 
