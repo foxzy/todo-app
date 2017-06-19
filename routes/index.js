@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
 
 var tasks = require('./tasks')
 
@@ -28,25 +27,15 @@ router.get('/tasks/TagWithStatus/:tag/:status', function (req, res) {
     res.json(tasks.filterByTagAndStatus(tag,status));
 });
 
+router.put('/tasks/:id', function (req, res) {
+    if (!req.body) return res.sendStatus(400);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    var id = req.params.id;
+    var task = tasks.findById(id);
+    tasks.updateTask(task, req.body);
+    res.sendStatus(200);
+});
 
 
 
 module.exports = router;
-

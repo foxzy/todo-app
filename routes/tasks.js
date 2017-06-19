@@ -56,5 +56,17 @@ exports.filterByTagAndStatus = function (tag,status) {
     });
         return filtered;
 }
+exports.updateTask = function (task, data)
+{
+    for (var name in task) {
+        if (task.hasOwnProperty(name)) {
+            //console.log(name.toString());
+
+
+
+        }
+    }
+}
+
 
 
