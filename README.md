@@ -1,6 +1,6 @@
 # todo-app
 RESTful API backend for todo task.
-#Installation
+##Installation
 <ol>
 <li><p>Clone the repository: git clone https://github.com/foxzy/todo-app.git</p></li>
 <li><p>Install the application: npm install</p></li>
@@ -12,7 +12,7 @@ RESTful API backend for todo task.
 </li>
 </ol>
 
-#API Document
+###API Document
 1.Create RESTFul API 
 <ol>
 <li>GET http://localhost:3000/tasks/        :View all items in the list</li>
