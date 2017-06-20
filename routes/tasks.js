@@ -1,101 +1,57 @@
-/**
- * Created by parunya on 6/18/2017 AD.
- */
-var tasks = [
-    {
-        "id": 1,
-        "subject": "This is my TODO API",
-        "content": "Feel free to folk my project repository.",
-        "tags": "todo",
-        "status": "done"
-    },
-    {
-        "id": 2,
-        "subject": "Pay k-bank invoice",
-        "content": "Pay k-bank invoice",
-        "status": "done",
-        "tags": ["bill"]
-    },
-    {
-        "id": 3,
-        "subject": "Buy body suite",
-        "content": "Buy body suite",
-        "status": "done",
-        "tags": ["shopping"]
-    },
-    {
-        "id": 4,
-        "subject": "Buy used things",
-        "content": "Buy used things",
-        "status": "done",
-        "tags": ["shopping"]
+var express = require('express');
+var router = express.Router();
+var model = require('../models/task-mock');
+
+router.get('/tasks', function (req, res) {
+    var tasks = model.findAll();
+    res.json(tasks)
+});
+
+router.get('/task/:id', function (req, res) {
+    var task = model.findById(req.params.id);
+    res.json(task);
+});
+
+router.post('/task',function (req, res) {
+    if (!req.body) {
+        return res.sendStatus(400);
     }
-];
 
-function findLastId() {
-    var id = 0;
-    for (var i = 0; i < tasks.length; i++) {
-        if (tasks[i].id > id) {
-            id = tasks[i].id;
-        }
+    var task = model.create(req.body);
+    res.json({id: task.id});
+});
+
+router.put('/task/:id', function (req, res) {
+    if (!req.body) {
+        return res.sendStatus(400);
     }
-    return id;
-}
 
-exports.findAll = function() {
-    return tasks;
-};
+    var task = model.findById(req.params.id);
+    model.update(task, req.body);
 
-exports.findById = function (id) {
-    for (var i = 0; i < tasks.length; i++) {
-        if (tasks[i].id == id) return tasks[i];
-    }
-};
+    res.sendStatus(200);
+});
 
-exports.filterByStatus = function (status) {
-    var filtered = tasks.filter(function (item) {
-        return item.status === status;
-    });
-    return filtered;
-};
+router.put('/task/:id/status', function (req, res) {
+    var task = model.findById(req.params.id);
+    model.updateStatus(task, req.body.status);
+    res.sendStatus(200);
+});
 
-exports.filterByTag = function (tag) {
-    var filtered = tasks.filter(function (item) {
-        return item.Tag === tag;
-    });
-    return filtered;
-};
+router.delete('/task/:id', function (req, res){
+    model.delete(req.params.id);
+    res.sendStatus(200);
+});
 
-exports.filterByTagAndStatus = function (tag,status) {
-    var filtered = tasks.filter(function (item) {
-        return item.Tag === tag && item.status === status ;
-    });
-        return filtered;
-};
+router.get('/tasks/status/:status', function (req, res) {
+    var status = req.params.status;
+    res.json(model.filterByStatus(status));
+});
 
-exports.update = function (task, data)
-{
-    for (var prop in data) {
-        if (task.hasOwnProperty(prop)) {
-            task[prop] = data[prop];
-        }
-    }
-};
+router.get('/tasks/TagWithStatus/:tag/:status', function (req, res) {
+    var tag = req.params.tag;
+    var status = req.params.status;
+    res.json(model.filterByTagAndStatus(tag,status));
+});
 
-exports.persist = function (data) {
-    var task = data;
-    task.id = findLastId() + 1;
-    tasks.push(task)
-};
-
-exports.delete = function (id) {
-    tasks = tasks.filter(function (task) {
-        return task.id != id;
-    })
-};
-
-exports.updateStatus = function (task, status) {
-    task.status = status;
-};
-
-
+module.exports = router;
