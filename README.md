@@ -7,7 +7,6 @@ RESTful API backend for todo task.
 <li><p>Clone the repository: git clone https://github.com/foxzy/todo-app.git</p></li>
 <li><p>Install the application: npm install</p></li>
 <li><p>Start the server: node server.js</p></li>
-<li><p>Install the application: npm install</p></li>
 <li><p>Send request with postman </p>
      <p>Set Headers key:Content-type,</p>
      <p>Value:application/json</p>
