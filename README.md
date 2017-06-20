@@ -24,7 +24,7 @@ Create RESTFul API
     Set body request raw data
                   {
                     "subject": "office",
-                    "status": "PENDING",
+                    "status": "pending",
                     "Tag": "office",
                     "text": "follow up emails"
                    }
