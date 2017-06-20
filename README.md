@@ -11,7 +11,8 @@ RESTful API backend for todo task.
      <p>Value:application/json</p>
 </li>
 </ol>
-#Test
+
+#API Document
 1.Create RESTFul API 
 <ol>
 <li>GET http://localhost:3000/tasks/        :View all items in the list</li>
@@ -27,17 +28,21 @@ RESTful API backend for todo task.
                    }
      
 </li>
-<li>PUT http://localhost:3000/tasks/:id    :Edit existing task
+<li>PUT http://localhost:3000/tasks/:id       :Edit existing task
+
     setbody request raw data
                    {
                     "content": "clean the room number 401"
-                   }                              
+                   } 
+                                                
  </li>
  <li>PUT http://localhost:3000/tasks/:id/update-status    :Set the task status
+ 
      setbody request raw data
                    {
                     "status": "pending"
                    }
+                   
  </li>
  <li>DELETE http://localhost:3000/tasks/:id        :Delete a task from the list</li>
 </ol>
