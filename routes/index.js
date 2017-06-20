@@ -16,17 +16,17 @@ router.get('/tasks', function (req, res) {
   res.json(tasks.findAll())
 });
 
-router.get('/tasks/:id', function (req, res) {
+router.get('/task/:id', function (req, res) {
   var id = req.params.id;
   res.json(tasks.findById(id));
 });
 
-router.post('/tasks',function (req, res) {
+router.post('/task',function (req, res) {
     tasks.persist(req.body)
     res.sendStatus(200);
 });
 
-router.put('/tasks/:id', function (req, res) {
+router.put('/task/:id', function (req, res) {
     if (!req.body) return res.sendStatus(400);
     var id = req.params.id;
     var task = tasks.findById(id);
@@ -34,12 +34,12 @@ router.put('/tasks/:id', function (req, res) {
     res.sendStatus(200);
 });
 
-router.delete('/tasks/:id', function (req, res){
+router.delete('/task/:id', function (req, res){
     tasks.delete(req.params.id);
     res.sendStatus(200);
 });
 
-router.put('/tasks/:id/update-status', function (req, res) {
+router.put('/task/:id/status', function (req, res) {
     var task = tasks.findById(req.params.id);
     tasks.updateStatus(task, req.body.status);
     res.sendStatus(200);

@@ -4,10 +4,10 @@
 var tasks = [
     {
         "id": 1,
-        "subject": "Clean my room",
-        "content": "sweet the room",
-        "status": "pending",
-        "tags": ["home"]
+        "subject": "This is my TODO API",
+        "content": "Feel free to folk my project repository.",
+        "tags": "todo",
+        "status": "done"
     },
     {
         "id": 2,
