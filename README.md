@@ -1,9 +1,8 @@
 # todo-app
 RESTful API backend for todo task.
-
+<hr></hr>
 
 #Installation
-<hr></hr>
 <ol>
 <li><p>Clone the repository: git clone https://github.com/foxzy/todo-app.git</p></li>
 <li><p>Install the application: npm install</p></li>
@@ -14,7 +13,6 @@ RESTful API backend for todo task.
      <p>Value:application/json</p>
 </li>
 </ol>
-
 
 #API Document
 1.Create RESTFul API 
@@ -50,8 +48,7 @@ RESTful API backend for todo task.
  </li>
  <li>DELETE http://localhost:3000/tasks/:id        :Delete a task from the list</li>
 </ol>
-
-
+<hr></hr>
 
 
 
