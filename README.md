@@ -3,6 +3,7 @@ RESTful API backend for todo task.
 
 
 #Installation
+<hr></hr>
 <ol>
 <li><p>Clone the repository: git clone https://github.com/foxzy/todo-app.git</p></li>
 <li><p>Install the application: npm install</p></li>
