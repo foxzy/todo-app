@@ -13,9 +13,10 @@ RESTful API backend for todo task.
      <p>Value:application/json</p>
 </li>
 </ol>
+<hr></hr>
 
 #API Document
-1.Create RESTFul API 
+Create RESTFul API 
 <ol>
 <li>GET http://localhost:3000/tasks/        :View all items in the list</li>
 <li>GET http://localhost:3000/tasks/:id     :View a single task in the list</li>
