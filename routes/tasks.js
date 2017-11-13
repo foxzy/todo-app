@@ -2,17 +2,17 @@ var express = require('express');
 var router = express.Router();
 var model = require('../models/task-mock');
 
-router.get('/tasks', function (req, res) {
+router.get('/api/tasks', function (req, res) {
     var tasks = model.findAll();
     res.json(tasks)
 });
 
-router.get('/task/:id', function (req, res) {
+router.get('/api/tasks/:id', function (req, res) {
     var task = model.findById(req.params.id);
     res.json(task);
 });
 
-router.post('/task',function (req, res) {
+router.post('/api/tasks',function (req, res) {
     if (!req.body) {
         return res.sendStatus(400);
     }
@@ -21,7 +21,7 @@ router.post('/task',function (req, res) {
     res.json({id: task.id});
 });
 
-router.put('/task/:id', function (req, res) {
+router.put('/api/tasks/:id', function (req, res) {
     if (!req.body) {
         return res.sendStatus(400);
     }
