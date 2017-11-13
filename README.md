@@ -1,5 +1,5 @@
 # todo-app
-Backend RESTful API
+Backend RESTful API and security application with keycloak proxy.
 
 # Installation
 1. Git clone https://github.com/foxzy/todo-app.git
@@ -10,6 +10,9 @@ To test, call to the API using any tools like Postman.
 
 # API Reference
 RESTFul API
+
+#base-path: /api
+
 
 ## Methods
 
