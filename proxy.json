@@ -1,0 +1,31 @@
+{
+    "target-url": "http://localhost:3000",
+    "send-access-token": true,
+    "bind-address": "localhost",
+    "http-port": "8081",
+    "applications": [
+        {
+            "base-path": "/api",
+            "error-page": "/error.html",
+            "adapter-config": {
+                "realm": "banking",
+                "resource": "banking-api",
+                "realm-public-key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyDWPbXvMic/YUukT4S9XOgpJb+4VuPSnpdauWQ8UlgnhPgyOKcRpnh8jSaEnwUdHfUgeDAApZT/q3VLnI4Z6jEhX4IJGhJ9qRqDCFtb7lQKKpMMwpH1X0VdVnC+AdDu6jlR2bzkDzZsaLCqpti6sjeEpBRntkc1XIVgvEb6K33RT4Q+cQqplzx5DZjms2RhYHXzTfkRsgXAO3BYWDGCKHx3BbfRVvoQ3cVX+77GfC9qa+3nxFbV13/TJJn0wl3AtJuA9vDGvMilY67UrgI1kKiBbjswyY4YNgxdvR22ZhkqxqHCYnQoP3t/ecLw85/fHOceRp6ls+oR4HkXFaUdGPQIDAQAB",
+                "auth-server-url": "http://localhost:8080/auth",
+                "principal-attribute": "name",
+                "credentials": {
+                    "secret": "0d3fce0c-a228-454b-b107-6c36de8edaa3"
+                }
+            }
+            ,
+            "constraints": [
+                {
+                    "pattern": "/tasks",
+                    "roles-allowed": [
+                        "user"
+                    ]
+                }
+            ]
+        }
+    ]
+}
